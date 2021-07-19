@@ -1,0 +1,20 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  username: postgres
+  password: 123456
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+
+development:
+  <<: *default
+  database: api_with_devise_jwt_development
+
+test:
+  <<: *default
+  database: api_with_devise_jwt_test
+
+production:
+  <<: *default
+  database: api_with_devise_jwt_production
+  username: api_with_devise_jwt
+  password: <%= ENV['API_WITH_DEVISE_JWT_DATABASE_PASSWORD'] %>
