@@ -1,12 +1,12 @@
 Rails.application.routes.draw do
-  scope :api, module: :api do 
+  scope :api, module: :api, defaults: { format: :json } do 
     scope :v1, module: :v1 do 
 
       root to: "home#index"
       resources :home, only: :index
 
       scope :users, module: :users do 
-        devise_for :users, path: '', defaults: { format: :json },
+        devise_for :users, path: '',
         path_names: {
           sign_in:       'sign_in', 
           sign_out:      'sign_out',
